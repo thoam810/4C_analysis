@@ -1,0 +1,43 @@
+#Directory for generating read counts and data quality reports
+cd /mnt/projects/amarni_4c/OG4533BP2/data_processing/
+
+#Generating Fastqc quality files on initial sample reads
+for sample_num in {16..37}
+do
+fastqc S${sample_num}_fastq.gz
+done
+
+#Generate total number of reads per sample
+for sample_num in {16..37}
+do
+echo "S${sample_num}"
+TMP=$(wc -l S${sample_num}* | grep total | sed  -E "s/[[:space:]]+/ /g" | cut -f 2 -d " ")
+expr $TMP / 4
+done
+done
+done
+
+#Generating Fastqc quality on demuliplexed files
+for sample_num in {16..37}
+do
+for bait in Erg85 Runx1P1 Runx1P2 Runx124
+    do
+   	 for dir in fwd rev
+   	 do
+fastqc S${sample_num}_${bait}_${dir}.fastq
+done
+done
+done
+
+#Generate  total number of reads per demuliplexed bait/primer
+for sample_num in {16..37}
+do
+for bait in Erg85 Runx1P1 Runx1P2 Runx124
+    do
+   	 for dir in fwd rev
+   	 do
+echo "S${sample_num}_${bait}_${dir}"
+echo $(cat S${sample_num}_${bait}_${dir}.fastq|wc -l)/4|bc
+done
+done
+done
