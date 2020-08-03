@@ -30,7 +30,7 @@ TGGGGGAGACTGACAAATAGATC 24
 100-8-24=68
 
 #This is digesting the Genome (Ch38) with the DpnII to 70bp reads
-#bash reduced genome script(reduced_genome_2.sh) -f_frag_len (70) -p_enzyme (dpnii) -g_genome (GCA_000001405.15_GRCh38_no_alt_analysis_set)
+#bash edited 4Cker script(reduced_genome_2.sh) -f_frag_len (70) -p_enzyme (dpnii) -g_genome (GCA_000001405.15_GRCh38_no_alt_analysis_set)
 bash reduced_genome_2.sh -f 70 -p dpnii -g GCA_000001405.15_GRCh38_no_alt_analysis_set
 
 #This is digesting the Genome (Ch38) with the Csp6I to 70bp reads
