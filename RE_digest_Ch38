@@ -1,0 +1,36 @@
+#Restriction enzyme Digest of Genome (Ch38)
+#In order to determine the fragment length of the Digested genome the bait primers were counted (Primer extended out to RE site) + 8 bases for the sample adapter length.
+#Fragment length has to be longer than the read of the demultiplexed sample minus the primer (the fragment length has to be longer than 35 bases) 
+-in case we decided to align based on each individual primer 70 bases was used as then it would allow for Erg85 Reverse primer reads to align as they would be 68 bases long
+
+#Number of bp to be excluded (as they are primer->RE site from 100bp reads
+Runx1P1    
+AACCAAGTCTGTCAGTCTCCTGTAC = 26
+100-8-26=66
+GCTAACAAGCAGAGGAAGCAATATTTGTATAGAATAACAGAAAAAAAAGATC 53
+100-8-53=57
+
+Runx124    
+ACGTGTCCACATTTTTCAGAAGTTGAATGGTTTTGTGTAATGGTAC 47
+100-8-47=45
+CAGTTACTTCGCCCATTGCTTTTTCTAAAGGATC 35
+100-8-35=57
+
+Runx1P2    
+GCCGGCTCCTGGAATTGGCCCGCGCGCCCCCGCCGCCGCGCCGCGCGCTACTGTAC 57
+100-8-57=35
+AGGATGTGCGTGCGTGTGTAACCCGAGCCGCCCGATC 38
+100-8-38=54
+
+Erg85    
+CTCGCTGCTTAGGTGTAGTCCTTAGGAATGAAAATCTGAACGTAGTAC 49
+100-8-49=43
+TGGGGGAGACTGACAAATAGATC 24
+100-8-24=68
+
+#This is digesting the Genome (Ch38) with the DpnII to 70bp reads
+#bash reduced genome script(reduced_genome_2.sh) -f_frag_len (70) -p_enzyme (dpnii) -g_genome (GCA_000001405.15_GRCh38_no_alt_analysis_set)
+bash reduced_genome_2.sh -f 70 -p dpnii -g GCA_000001405.15_GRCh38_no_alt_analysis_set
+
+#This is digesting the Genome (Ch38) with the Csp6I to 70bp reads
+bash reduced_genome_2.sh -f 70 -p csp6i -g GCA_000001405.15_GRCh38_no_alt_analysis_set
