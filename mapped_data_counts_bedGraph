@@ -1,5 +1,6 @@
 #Create a counts file from mapped data (SAM file output from bowtie2)
 #Edited 4Cker script using files from Alignment_bowtie
+#this will generate a tabulated bedGraph file with 4 columns : Chromosome number \t location start of fragment \t location end of fragment \t count
 
 for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*dpnii_65_aligned.sam
  do
