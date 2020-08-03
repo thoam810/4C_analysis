@@ -15,7 +15,7 @@
 #   -S aligned_sam/sample_aligned.sam \
 #   --un aligned_sam/sample_unaligned.sam
 
-#Atomate the alignment to the dpnII and Csp6I fragments for each sample (5’ 65 base trim, 3’ 5 base trim)
+#Automate the alignment to the dpnII and Csp6I fragments for each sample (5’ 65 base trim, 3’ 5 base trim)
 for re in dpnii csp6i
 do
 for sample_num in {16..37}
