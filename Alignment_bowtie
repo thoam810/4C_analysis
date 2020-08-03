@@ -31,3 +31,10 @@ bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_00000
     done
 done
 done
+
+#Can run test on individual sample
+#test run sample S16_Erg85_fwd
+bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_000001405.15_GRCh38_no_alt_analysis_set_dnpii_flanking_sequences_70_unique -U S16_Erg85_fwd.fastq -S aligned_sam/S16_Erg85_fwd_aligned.sam --un aligned_sam/S16_Erg85_fwd_unaligned.sam
+
+#test run sample S16_Erg85_rev (65bp)
+bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sequences_70_unique -U S16_Erg85_rev.fastq -S aligned_sam/S16_Erg85_rev_aligned.sam --un aligned_sam/S16_Erg85_rev_unaligned.sam
