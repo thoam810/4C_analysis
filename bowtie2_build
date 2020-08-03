@@ -1,0 +1,8 @@
+#Bowtie files of RE digested genome (Ch38)
+#Building bowtie files for DpnII and Csp6i digested genomes using the reduced genome files produced by RE_digest_Ch38
+#Bowtie is building it’s own files for the digested DpnII genome, this will result in 6 files
+bowtie2-build GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sequences_70_unique.fa GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sequences_70_unique
+
+#Bowtie is building it’s own files for the digested Csp6I genome, this will result in 6 files
+bowtie2-build GCA_000001405.15_GRCh38_no_alt_analysis_set_csp6i_flanking_sequences_70_unique.fa GCA_000001405.15_GRCh38_no_alt_analysis_set_csp6i_flanking_sequences_70_unique
+
