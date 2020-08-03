@@ -1,6 +1,6 @@
 #select directory of sequencing files
 cd /mnt/projects/amarni_4c/OG4533BP2/OG4533BP2_fastq/
-#each sample was split across 2 lanes, so concatenate (cat) them together
+#each sample was split across 2 lanes, so concatenate (cat) them together (sample_name = S16-S37)
 cat CE40WANXX-4533B-16-00-01_S16_L007_R1_001.fastq.gz CE40WANXX-4533B-16-00-01_S16_L008_R1_001.fastq.gz > S16_fastq.gz
 cat CE40WANXX-4533B-17-00-01_S17_L007_R1_001.fastq.gz CE40WANXX-4533B-17-00-01_S17_L008_R1_001.fastq.gz > S17_fastq.gz
 cat CE40WANXX-4533B-18-00-01_S18_L007_R1_001.fastq.gz CE40WANXX-4533B-18-00-01_S18_L008_R1_001.fastq.gz > S18_fastq.gz
