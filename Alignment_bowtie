@@ -38,3 +38,8 @@ bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_00000
 
 #test run sample S16_Erg85_rev (65bp)
 bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sequences_70_unique -U S16_Erg85_rev.fastq -S aligned_sam/S16_Erg85_rev_aligned.sam --un aligned_sam/S16_Erg85_rev_unaligned.sam
+
+#Can run a quick check to see alignment to chromosome 21
+cd /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam
+#grep chr21 (file name)
+grep chr21 S20_Runx1P2_fwd_dpnii_65_aligned.sam
