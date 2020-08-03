@@ -1,7 +1,8 @@
 #Restriction enzyme Digest of Genome (Ch38)
-#In order to determine the fragment length of the Digested genome the bait primers were counted (Primer extended out to RE site) + 8 bases for the sample adapter length.
+#Based on 4Cker script
+#In order to determine the fragment length of the digested genome, the bait primers were counted (Primer extended out to RE site) + 8 bases for the sample adapter length.
 #Fragment length has to be longer than the read of the demultiplexed sample minus the primer (the fragment length has to be longer than 35 bases) 
--in case we decided to align based on each individual primer 70 bases was used as then it would allow for Erg85 Reverse primer reads to align as they would be 68 bases long
+-in case we decided to align based on each individual primer 70 bases was used as then it would allow for Erg85 Reverse primer reads to align, as they would be 68 bases long
 
 #Number of bp to be excluded (as they are primer->RE site from 100bp reads
 Runx1P1    
