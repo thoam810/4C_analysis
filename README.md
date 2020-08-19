@@ -1,6 +1,9 @@
 #4C_analysis
+
 4C seq differentiation analysis of WT K562 and cohesin mutant K562 cells: non-differentiated (12 hours DMSO treatment), 12 hours Phorbol 12-myristate 13-acetate (PMA) treatment, 72 hours PMA treatment
+
 Baits used: Runx1 Promoter 1 (Runx1P1), Runx1 Promoter 2 (Runx1P2), Runx1 Enhancer +24 (Runx124), Erg Enhancer +85 (Erg85)
+
 Software required:
 Bowtie2
 devtools
@@ -71,4 +74,13 @@ This created the output files:
 (Sample name)_(bait name)_(direction)_(re)_aligned.bedGraph e.g S16_Runx124_rev_dpnii_aligned.bedGraph
 (Sample name)_(bait name)_(direction)_(re)_unaligned.sam e.g S16_Runx124_rev_dpnii_unaligned.bedGraph
 
-8.
+8. Removing the self-ligated and undigested fragments
+- use file remove_self_ligated_undigested
+This created the output files:
+(Sample name)_(bait name)_(direction)_(re)_65_aligned_rm_self_und.bedGraph e.g S37_Runx124_rev_dpnii_65_aligned_rm_self_und.bedGraph
+
+9. R analysis to run 4Cker files
+-use files:
+
+
+
