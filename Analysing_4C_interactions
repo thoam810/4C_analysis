@@ -1,0 +1,59 @@
+#In order to run 4Cker files install appropriate packages in R
+
+#Installing R in Unix
+R
+
+#Installing packages
+install.packages("devtools")
+if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
+BiocManager::install("geneplotter")
+BiocManager::install("genefilter")
+BiocManager::install("DESeq2")
+
+packageurl <- "https://cran.r-project.org/src/contrib/Archive/mnormt/mnormt_1.5-7.tar.gz"
+install.packages(packageurl, repos=NULL, type="source")
+
+Sys.setenv(TAR = "/bin/tar")
+devtools::install_github("rr1859/R.4Cker")
+
+#Accessing R packaging
+library(devtools)
+install_github("rr1859/R.4Cker")
+library(R.4Cker)
+
+#Analyzing 4C interactions
+#Creating a 4C-ker object: 
+#A 4C-ker object can be created using exiting data frames loaded in R (create4CkerObjectFromDFs)
+#It will also check if the samples pass QC criteria and generate a stats file. 
+#To pass QC samples must have > than 1 million reads, > than 40% of reads on the cis chromosome and > 40% coverage in the 200kb region around the bait for 4bp cutter and 2MB for 6bp cutters. 
+#The arguments for the function are as follows:
+
+#files/dfs: path to files or character string of the names of the data.frame variables
+#bait_chr: chromosome name of bait location
+#bait_coord: chromosomal coordinate of bait primer
+#primary_enz: sequence of primary restriction enzyme
+#samples: names of samples for all files
+#conditions: names of conditions being analyzed (min of 1)
+#replicates: number of replicates for each condition
+#species: code for species (Mouse=mm, Human=hs)
+#output_dir: path to directory where all output files will be saved
+#enz_file: data.frame containing RE fragments
+
+#For the RE fragments you can use the file generated from the reduced_genome script
+enz_file_dpnii=read.table("/mnt/projects/amarni_4c/4cker_scripts/GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sites_70_unique_2.bed", stringsAsFactors = FALSE)
+
+#To analyse multiple conditions with the same bait
+# RUNX1 +24 DpnII example
+
+my_obj = createR4CkerObjectFromFiles(files = c("/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S16_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S17_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S18_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S20_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S21_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S22_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S23_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S24_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S25_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S27_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S28_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S29_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S31_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S32_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S33_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S34_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S35_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph","/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S36_Runx1P1_rev_dpnii_65_aligned_rm_self_und.bedGraph"),
+                       bait_chr="chr21",
+                       bait_coord= 35047149,
+                       bait_name = "Runx1P1",
+                       primary_enz = "GATC",
+                       samples = c("WT_DMSO_12h_1","WT_DMSO_12h_2","WT_DMSO_12h_3","WT_PMA_12h_1","WT_PMA_12h_2","WT_PMA_12h_3","WT_PMA_72h_1","WT_PMA_72h_2","WT_PMA_72h_3","STAG2_DMSO_12h_1","STAG2_DMSO_12h_2","STAG2_DMSO_12h_3","STAG2_PMA_12h_1","STAG2_PMA_12h_2","STAG2_PMA_12h_3","STAG2_PMA_72h_1","STAG2_PMA_72h_2","STAG2_PMA_72h_3"),
+                       conditions = c("WT_DMSO_12h", "WT_PMA_12h","WT_PMA_72h","STAG2_DMSO_12h","STAG2_PMA_12h","STAG2_PMA_72h"),
+                       replicates = c(3,3,3,3,3,3),
+                       species = "hs",
+                       output_dir = "/mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/",
+		       enz_file=enz_file_dpnii)
+           
