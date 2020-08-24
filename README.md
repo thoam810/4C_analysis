@@ -18,7 +18,7 @@ Software required:
 Processing 4C data:
  In Unix
  
-1.Concatemnating files
+1. Concatemnating files
  -Samples were sequenced using HiSeq2500 100bp single end reads on two lanes to join reads for the different lanes concatenate file was used: Concatenate_seq_bash
  This created output files:
  (Sample_name)_fastq.gz e.g S16_fastq.gz
