@@ -25,8 +25,8 @@ Processing 4C data:
  
  (Sample_name)_fastq.gz e.g S16_fastq.gz
 
-2. Demultiplexing samples using the 4 baits/primers (Runx1P1 Runx124 Runx1P2 Erg85) and 2 restriction enzyme (RE) sites: demux_4C_hiseq.sl 
- ./demux_4C_hiseq.sl
+2. Demultiplexing samples using the 4 baits/primers (Runx1P1 Runx124 Runx1P2 Erg85) and 2 restriction enzyme (RE) sites: demux_4C_hiseq_2.sh 
+ ./demux_4C_hiseq_2.sh
  -Need to have file of primers pairs used. 
  -Name of file: Amarni_4C_Primers.txt - this is a tabulated file with 3 columns : Name of the primer pair \t fwd primer sequence \t rev primer sequence
  
@@ -35,7 +35,7 @@ Processing 4C data:
  (Sample_name)_(bait name)_(direction).fastq e.g S16_Runx124_rev.fastqc.
 
 3. Generate read counts and data quality reports. 
- -To check the quality and number of initial reads and compare to the demultiplexed and mapped reads FASTQC_analysis_bash was used. 
+ -To check the quality and number of initial reads and compare to the demultiplexed reads FASTQC_analysis_bash was used. 
  
  This created the output files:
  
