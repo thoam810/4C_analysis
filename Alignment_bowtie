@@ -1,5 +1,5 @@
 #Aligning demultiplexed reads to the Reduced genomes created by bowtie2_build
-#bowtie2 -p 12 -N 0 -5 26 
+#bowtie2 -p 12 -N 0 -5 65 
 #(-p =processors -4Cker recommends 12 processors)
 #(n-N =number of mismatches)
 #(-5 for 5' end open -- "-5 option can be used to trim the first ‘x’ bps that contain the barcode (if present) and the bait sequence including the RE." 65 as determined in RE_digest_Ch38 as Runx1P2 Fwd primer +8 bases for adapter =65)
@@ -15,7 +15,7 @@
 #   -S aligned_sam/sample_aligned.sam \
 #   --un aligned_sam/sample_unaligned.sam
 
-#Automate the alignment to the dpnII and Csp6I fragments for each sample (5’ 65 base trim, 3’ 5 base trim)
+#Automate the alignment of Ch38 to the DpnII and Csp6I fragments for each sample (5’ 65 base trim, 3’ 5 base trim)
 for re in dpnii csp6i
 do
 for sample_num in {16..37}
@@ -32,8 +32,26 @@ bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_00000
 done
 done
 
+#Automate the alignment of hg19 to the DpnII fragments for each sample (5’ 65 base trim, 3’ 5 base trim)
+for re in dpnii
+do
+for sample_num in {16..37}
+do
+    sample=S${sample_num}
+    for bait in Erg85 Runx1P1
+    do
+   	 for dir in rev fwd
+   	 do
+   	      echo "bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/hg19_dpnii_flanking_sequences_70_unique -U ${sample}_${bait}_${dir}.fastq -S aligned_sam/${sample}_${bait}_${dir}_${re}_hg19_aligned.sam --un aligned_sam/${sample}_${bait}_${dir}_${re}_hg19_unaligned.sam"
+bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/hg19_dpnii_flanking_sequences_70_unique -U ${sample}_${bait}_${dir}.fastq -S aligned_sam/${sample}_${bait}_${dir}_${re}_hg19_aligned.sam --un aligned_sam/${sample}_${bait}_${dir}_${re}_hg19_unaligned.sam
+   	 done
+    done
+done
+done
+
+
 #Can run test on individual sample
-#test run sample S16_Erg85_fwd
+#test run sample S16_Erg85_fwd (65bp)
 bowtie2 -p 12 -N 0 -5 65 -3 5 -x /mnt/projects/amarni_4c/4cker_scripts/GCA_000001405.15_GRCh38_no_alt_analysis_set_dnpii_flanking_sequences_70_unique -U S16_Erg85_fwd.fastq -S aligned_sam/S16_Erg85_fwd_aligned.sam --un aligned_sam/S16_Erg85_fwd_unaligned.sam
 
 #test run sample S16_Erg85_rev (65bp)
