@@ -2,50 +2,50 @@ To remove the self-ligated and undigested fragments
 1. find the coordinates based on the primer sequence in the Genome file (Watson strand regardless of primer strand and not including the RE sequence)
 
 cd /mnt/projects/amarni_4c/4cker_scripts
-grep -i -B 1 "TTGCTTCCTCTGCTTGTTAGC" GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sequences_70_unique_2.fa
+grep -i -B 1 "TTGCTTCCTCTGCTTGTTAGC" hg19_dpnii_flanking_sequences_70_unique_2.fa
 
 #RUNX1 +24 DpnII Bait example:
 #Have to use reverse complement (RC) of rev primer for DpnII
 #RUNX1+24 bait Reverse primer CAGTTACTTCGCCCATTGCT
 #Reverse compliment AGCAATGGGCGAAGTAACTG
 
-grep -i -B 1 "AGCAATGGGCGAAGTAACTG" GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sequences_70_unique_2.fa
+grep -i -B 1 "AGCAATGGGCGAAGTAACTG" hg19_dpnii_flanking_sequences_70_unique_2.fa
 
 #It returned two overlapping fragments contatining RUNX1+24 Reverse primer
->chr21:35026695-35026765
+>chr21:36398992-36399062
 CATCCCTCATGGCGGAGCAGCAAGGGGATCCTTTAGAAAAAGCAATGGGCGAAGTAACTGAAAGAGCGAC
->chr21:35026725-35026795
+>chr21:36399022-36399092
 CTTTAGAAAAAGCAATGGGCGAAGTAACTGAAAGAGCGACGCAGAAAGCAACAGCCAGAAACGGCGGGGA
 
 2. Then find the sequence before and after the each of the bait fragments
-grep -E -A 1 -B 1 'chr21.35026695.35026765' GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sites_70_unique_2.bed
+grep -E -A 1 -B 1 'chr21.36398992.36399062' hg19_dpnii_flanking_sites_70_unique_2.bed
 
-chr21   35026661        35026731
-chr21   35026695        35026765
-chr21   35026725        35026795
+chr21   36398958        36399028
+chr21   36398992        36399062
+chr21   36399022        36399092
 
-grep -E -A 1 -B 1 'chr21.35026725.35026795' GCA_000001405.15_GRCh38_no_alt_analysis_set_dpnii_flanking_sites_70_unique_2.bed
+grep -E -A 1 -B 1 'chr21.36399022.36399092' hg19_dpnii_flanking_sites_70_unique_2.bed
 
-chr21   35026695        35026765
-chr21   35026725        35026795
-chr21   35027810        35027880
+chr21   36398992        36399062
+chr21   36399022        36399092
+chr21   36400107        36400177
 
-#Which means the RUNX1+24 bait fragments lay between chr21.35026661.35026731 and chr21.35027810.35027880
+#Which means the RUNX1+24 bait fragments lay between chr21.36398958.36399028 and chr21.36400107.36400177
 
-chr21   35026661        35026731
-chr21   35026695        35026765
-chr21   35026725        35026795
-chr21   35027810        35027880
+chr21   36398958        36399028
+chr21   36398992        36399062
+chr21   36399022        36399092
+chr21   36400107        36400177
 
-'chr21.35026661.35026731|chr21.35027810.35027880'
+'chr21.36398958.36399028|chr21.36400107.36400177'
 
 3. Remove the fragments matching the coordinates from line 1 and 3 printed above from all .bedGraph file and generate new files with suffix '_rm_self_und.bedGraph'. Remember to do this for each bait.
 
 cd /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/
 
 #RUNX1 +24 DpnII Bait example:
-for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*_Runx124_*_dpnii_65_aligned.bedGraph; 
-do grep -v -E 'chr21.35026661.35026731|chr21.35027810.35027880' $file > $(echo $file | sed 's/.bedGraph/_rm_self_und.bedGraph/g'); done
+for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*_Runx124_*_dpnii_hg19_aligned.bedGraph; 
+do grep -v -E 'chr21.36398958.36399028|chr21.36400107.36400177' $file > $(echo $file | sed 's/.bedGraph/_rm_self_und.bedGraph/g'); done
 
-This created the output files:
-(Sample name)_(bait name)_(direction)_(re)_65_aligned_rm_self_und.bedGraph e.g S37_Runx124_rev_dpnii_65_aligned_rm_self_und.bedGraph
+#This created the output files:
+(Sample name)_(bait name)_(direction)_(re)_hg19_aligned_rm_self_und.bedGraph e.g S37_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph
