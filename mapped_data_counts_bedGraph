@@ -11,3 +11,12 @@ for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*dpnii
  do
  awk < $file '{print $3}' | grep "^ch" | sort | uniq -c | sed -e 's/:\| \|-/\t/g' | awk '{print $2"\t"$3"\t"$4"\t"$1 }' - >  $(echo $file | sed 's/\.sam/\.bedGraph/g')
 done
+
+#To provide DpnII alignment count make a document for read outin same directory(/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam)
+touch hg19_count.txt
+
+#DpnII alignment counts
+for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*dpnii_hg19_aligned.bedGraph
+do
+echo $(echo $file | sed 's/\/mnt\/projects\/amarni_4c\/OG4533BP2\/data_processing\/aligned_sam\///g') $(awk < $file '{s+=$4}END{print s}') >> hg19_count.txt
+done
