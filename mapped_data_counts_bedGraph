@@ -2,7 +2,12 @@
 #Edited 4Cker script using files from Alignment_bowtie
 #this will generate a tabulated bedGraph file with 4 columns : Chromosome number \t location start of fragment \t location end of fragment \t count
 
-for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*dpnii_65_aligned.sam
+#change directory
+cd /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam
+
+#hg19
+#bash sam_bedGraph.sh input_dir_forSAMfiles/
+for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*dpnii_hg19_aligned.sam
  do
- awk < $file '{print $3}' | grep "^ch" | sort | uniq -c | sed -e 's/_\|:\| \|-/\t/g' | awk '{print $2"\t"$3"\t"$4"\t"$1 }' - >  $(echo $file | sed 's/\.sam/\.bedGraph/g')
+ awk < $file '{print $3}' | grep "^ch" | sort | uniq -c | sed -e 's/:\| \|-/\t/g' | awk '{print $2"\t"$3"\t"$4"\t"$1 }' - >  $(echo $file | sed 's/\.sam/\.bedGraph/g')
 done
