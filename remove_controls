@@ -1,0 +1,7 @@
+#Reads at fragments that had reads in the corresponding no ligase control file were considered background noise and removed from the aligned files
+#directory
+cd /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam
+
+#remove fragments that had reads in the control files
+#example of WT DMSO 12h replicate 1 (S16) and WT DMSO 12h no ligase control (S19)
+bedtools intersect -v -a S16_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph -b S19_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph>S16_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph
