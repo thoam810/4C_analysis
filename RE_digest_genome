@@ -1,4 +1,4 @@
-#Restriction enzyme Digest of Genome (Ch38)
+#Restriction enzyme Digest of Genome 
 #Based on 4Cker script
 #In order to determine the fragment length of the digested genome, the bait primers were counted (Primer extended out to RE site) + 8 bases for the sample adapter length.
 #Fragment length has to be longer than the read of the demultiplexed sample minus the primer (the fragment length has to be longer than 35 bases) 
@@ -35,3 +35,7 @@ bash reduced_genome_2.sh -f 70 -p dpnii -g GCA_000001405.15_GRCh38_no_alt_analys
 
 #This is digesting the Genome (Ch38) with the Csp6I to 70bp reads
 bash reduced_genome_2.sh -f 70 -p csp6i -g GCA_000001405.15_GRCh38_no_alt_analysis_set
+
+#This is digesting the Genome (hg19) with the DpnII to 70bp reads
+#bash edited 4Cker script(reduced_genome_2.sh) -f_frag_len (70) -p_enzyme (dpnii) -g_genome (hg19)
+bash reduced_genome_2.sh -f 70 -p dpnii -g hg19
