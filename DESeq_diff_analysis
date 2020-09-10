@@ -1,0 +1,47 @@
+#Differential analysis is done between two conditions on the windows that are interacting with the bait in at least 2 condition. 
+#This analysis only works for nearbait and cis interactions. 
+#A plot of significant interactions was generated and a BED file of significantly different domains was saved in the output directory. 
+#All run as per https://github.com/rr1859/R.4Cker
+#The arguments for the function are as follows:
+#obj: 4CkerObject created for analysis Analysing_4C_interactions
+#norm_counts_avg: Average counts of replicates for each condition per window
+#windows: Raw counts per window for each sample
+#conditions: Conditions to compare - only two conditions for each comparison (same names as Analysing_4C_interactions)
+#region: Region for analysis. "nearbait" or "cis"
+#coordinates: Coordinates for a more focused analysis. example: coordinates=c(41e6,42e6)
+#pval: p-value cut off for DESeq2 analysis. Recommended values are 0.01,0.05 or 0.1. If given p-value fails, the function will try higher values upto 0.1
+
+#These were carried out for nearbait and cis
+#WT DMSO 12h vs STAG2 DMSO 12h
+#WT PMA 12h vs STAG2 PMA 12h
+#WT PMA 72h vs STAG2 PMA 72h
+#WT DMSO 12h vs WT PMA 12h
+#WT DMSO 12h vs WT PMA 72h
+#WT PMA 12h vs WT PMA 72h
+#STAG2 DMSO 12h vs STAG2 PMA 12h
+#STAG2 DMSO 12h vs STAG2 PMA 72h
+#STAG2 PMA 12h vs STAG2 PMA 72h
+
+#Differential nearbait analysis example: WT DMSO 12h vs STAG2 DMSO 12h
+#WT DMSO 12h vs STAG2 DMSO 12h
+res_df_nearbait_Runx24_DMSO_WT_vs_STAG2 = differentialAnalysis(obj=my_obj_hg19Runx124,
+			norm_counts_avg=nb_hg19_results_Runx124$norm_counts_avg,
+			windows=nb_hg19_results_Runx124$window_counts,
+			conditions = c("WT_DMSO_12h","STAG2_DMSO_12h"),
+			region="nearbait",
+			coordinates=NULL,
+			pval=0.05)
+
+res_df_nearbait_Runx24_DMSO_WT_vs_STAG2[res_df_nearbait_Runx24_DMSO_WT_vs_STAG2$padj<.05,]
+
+#Differential cis analysis example: WT DMSO 12h vs STAG2 DMSO 12h
+#WT DMSO 12h vs STAG2 DMSO 12h
+res_df_cis_Runx24_DMSO_WT_vs_STAG2 = differentialAnalysis(obj=my_obj_hg19Runx124,
+			norm_counts_avg=cis_hg19_results_Runx124$norm_counts_avg,
+			windows=cis_hg19_results_Runx124$window_counts,
+			conditions = c("WT_DMSO_12h","STAG2_DMSO_12h"),
+			region="cis",
+			coordinates=NULL,
+			pval=0.05)
+ 
+res_df_cis_Runx24_DMSO_WT_vs_STAG2[res_df_cis_Runx24_DMSO_WT_vs_STAG2$padj<.05,]
