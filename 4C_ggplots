@@ -1,0 +1,26 @@
+
+#To generate R ggplots using the prviously loaded objects in Analysing_4C_interactions file
+library(ggplot2)
+
+#near bait ggplot
+
+Runx124_near_ggplot<-ggplot(nb_hg19_results_Runx124$norm_counts_avg, aes(x=Coord, y=Count))+
+	theme_bw()+
+	geom_line()+xlab(paste("Chromosome coordinates (", my_obj_hg19Runx124@bait_chr, ")", sep =""))+
+	ylab("Normalized counts")+
+	ggtitle(paste("Near bait analysis (", my_obj_hg19Runx124@bait_name, " bait)", sep = ""))+
+ylim(c(0,30000))+
+facet_wrap(~ Condition)
+ggsave("/mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/Runx124_near_ggplot.pdf",Runx124_near_ggplot)
+
+#cis ggplot
+
+Runx124_cis_ggplot<-ggplot(cis_hg19_results_Runx124$norm_counts_avg, aes(x=Coord, y=Count))+
+	theme_bw()+
+	geom_line()+xlab(paste("Chromosome coordinates (", my_obj_hg19Runx124@bait_chr, ")", sep =""))+
+	ylab("Normalized counts")+
+	ggtitle(paste("Near bait analysis (", my_obj_hg19Runx124@bait_name, " bait)", sep = ""))+
+ylim(c(0,30000))+
+facet_wrap(~ Condition)
+ggsave("/mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/Runx124_cis_ggplot.pdf",Runx124_cis_ggplot)
+
