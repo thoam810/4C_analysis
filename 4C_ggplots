@@ -1,4 +1,3 @@
-
 #To generate R ggplots using the prviously loaded objects in Analysing_4C_interactions file
 #run as per https://github.com/rr1859/R.4Cker
 library(ggplot2)
