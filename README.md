@@ -99,20 +99,20 @@ Processing 4C data:
  (Sample name)_(bait name)_(direction)_(re)_hg19_aligned_rm_self_und.bedGraph e.g S37_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph
 
 9. Remove fragments that had reads in the control files
- -use files remove_controls
+ - use files remove_controls
  
  This created the output files:
 (Sample name)_(bait name)_(direction)_(re)_65_aligned_rm_self_und.bedGraph e.g S37_Runx124_rev_dpnii_65_aligned_rm_self_und.bedGraph
 S16_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph
 
 10. Analysing 4C interactions
- -use files Analysing_4C_interactions
+ - use files Analysing_4C_interactions
 
 11. Generate R ggplots of 4C interactions
-- use file 4C_ggplots
+ - use file 4C_ggplots
 
 12. Differential analysis between different conditions (nearbait and cis)
--use file DESeq_diff_analysis
+ - use file DESeq_diff_analysis
  
 
 
