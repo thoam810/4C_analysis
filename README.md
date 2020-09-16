@@ -19,7 +19,7 @@ Processing 4C data:
  In Unix
  
 1. Concatenating files
- -Samples were sequenced using HiSeq2500 100bp single end reads on two lanes to join reads for the different lanes concatenate file was used: Concatenate_seq_bash
+ - Samples were sequenced using HiSeq2500 100bp single end reads on two lanes to join reads for the different lanes concatenate file was used: Concatenate_seq_bash
  
  This created output files:
  
@@ -27,15 +27,15 @@ Processing 4C data:
 
 2. Demultiplexing samples using the 4 baits/primers (Runx1P1 Runx124 Runx1P2 Erg85) and 2 restriction enzyme (RE) sites: demux_4C_hiseq_2.sh 
  ./demux_4C_hiseq_2.sh
- -Need to have file of primers pairs used. 
- -Name of file: Amarni_4C_Primers.txt - this is a tabulated file with 3 columns : Name of the primer pair \t fwd primer sequence \t rev primer sequence
+ - Need to have file of primers pairs used. 
+ - Name of file: Amarni_4C_Primers.txt - this is a tabulated file with 3 columns : Name of the primer pair \t fwd primer sequence \t rev primer sequence
  
  This created the output files: 
  
  (Sample_name)_(bait name)_(direction).fastq e.g S16_Runx124_rev.fastqc.
 
 3. Generate read counts and data quality reports. 
- -To check the quality and number of initial reads and compare to the demultiplexed reads FASTQC_analysis_bash was used. 
+ - To check the quality and number of initial reads and compare to the demultiplexed reads FASTQC_analysis_bash was used. 
  
  This created the output files:
  
@@ -49,12 +49,12 @@ Processing 4C data:
 
 4. Generate restriction enzyme (RE) digestion of Human Genome.
  - to map reads to regions of  Homo sapiens reference genome (hg19), the genome was digested using 4Cker_script and restriction enzyme (RE) digestion of Human  Genome file
- -use file: RE_digest_genome
- -edited 4Cker_script: reduced_genome_2.sh
- -Ch38 reference genome file from O'Sullivan lab: GCA_000001405.15_GRCh38_no_alt_analysis_set.fa
- -hg19 reference genome file from GATK (broad institute): hg19.fa
- -DpnII digestion file from 4Cker: dpnii.fa
- -Csp6I digestion file from 4Cker: csp6i.fa
+ - use file: RE_digest_genome
+ - edited 4Cker_script: reduced_genome_2.sh
+ - Ch38 reference genome file from O'Sullivan lab: GCA_000001405.15_GRCh38_no_alt_analysis_set.fa
+ - hg19 reference genome file from GATK (broad institute): hg19.fa
+ - DpnII digestion file from 4Cker: dpnii.fa
+ - Csp6I digestion file from 4Cker: csp6i.fa
  RE= Restriction Enzyme
  frag-len = fragment length chosen
  
