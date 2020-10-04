@@ -46,16 +46,16 @@ enz_file_dpnii_hg19=read.table("/mnt/projects/amarni_4c/4cker_scripts/hg19_dpnii
 #To analyse multiple conditions with the same bait
 #This file will give you an initial QC of all the files (> than 1 million reads, > than 40% of reads on the cis chromosome and > 40% coverage in the 200kb region around the bait for 4bp cutter and 2MB for 6bp cutters.)
 #from here samples can be reinputted based on QC
-# RUNX1 +24 DpnII example (WT PMA 12h replicate 2 was not included as it did not pass QC)
+# RUNX1 +24 DpnII example (WT PMA 12h replicate 2, WT PMA 72h replicate 2 was not included as they did not pass QC)
 
-my_obj_hg19Runx124 = createR4CkerObjectFromFiles(files = c("/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S16_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S17_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S18_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S20_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S22_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S23_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S24_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S25_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S27_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S28_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S29_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S31_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S32_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S33_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S34_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S35_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S36_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph"),
+my_obj_hg19Runx124 = createR4CkerObjectFromFiles(files = c("/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S16_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S17_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S18_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S20_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S22_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S23_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S25_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S27_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S28_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S29_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S31_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S32_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S33_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S34_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S35_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S36_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph"),
                        bait_chr="chr21",
                        bait_coord= 36398958,
                        bait_name = "Runx124",
                        primary_enz = "GATC",
-                       samples = c("WT_DMSO_12h_1", "WT_DMSO_12h_2","WT_DMSO_12h_3", "WT_PMA_12h_1", "WT_PMA_12h_3", "WT_PMA_72h_1", "WT_PMA_72h_2", "WT_PMA_72h_3", "STAG2_DMSO_12h_1", "STAG2_DMSO_12h_2", "STAG2_DMSO_12h_3", "STAG2_PMA_12h_1", "STAG2_PMA_12h_2", "STAG2_PMA_12h_3", "STAG2_PMA_72h_1", "STAG2_PMA_72h_2", "STAG2_PMA_72h_3"),
+                       samples = c("WT_DMSO_12h_1", "WT_DMSO_12h_2","WT_DMSO_12h_3", "WT_PMA_12h_1", "WT_PMA_12h_3", "WT_PMA_72h_1", "WT_PMA_72h_3", "STAG2_DMSO_12h_1", "STAG2_DMSO_12h_2", "STAG2_DMSO_12h_3", "STAG2_PMA_12h_1", "STAG2_PMA_12h_2", "STAG2_PMA_12h_3", "STAG2_PMA_72h_1", "STAG2_PMA_72h_2", "STAG2_PMA_72h_3"),
                        conditions = c("WT_DMSO_12h", "WT_PMA_12h", "WT_PMA_72h", "STAG2_DMSO_12h", "STAG2_PMA_12h", "STAG2_PMA_72h"),
-                       replicates = c(3,2,3,3,3,3),
+                       replicates = c(3,2,2,3,3,3),
                        species = "hs",
                        output_dir = "/mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/",
 		       enz_file=enz_file_dpnii_hg19)
@@ -70,42 +70,9 @@ my_obj_hg19Runx124 = createR4CkerObjectFromFiles(files = c("/mnt/projects/amarni
 nb_hg19_results_Runx124= nearBaitAnalysis(my_obj_hg19Runx124 ,k=3)
 
 #To analayse cis interactions
-#4C-ker recommends a k=10 for all experiments. However as the adaptive window build uses overlapping windows, consecutive windows that are detected as highly interacting can be stitched to form a ‘domain’ of high interaction with the bait. When k=10 the consequtive windows were too large to identify the regions of highest interaction , so k=5 was chosen.
+#4C-ker recommends a k=10 for all experiments. However as the adaptive window build uses overlapping windows, consecutive windows that are detected as highly interacting can be stitched to form a ‘domain’ of high interaction with the bait. When k=10 the consequtive windows were too large to identify the regions of highest interaction as well as k=5, so k=3 was chosen.
 
-cis_hg19_results_Runx124=cisAnalysis(my_obj_hg19Runx124 ,k=5)
+cis_hg19_results_Runx124=cisAnalysis(my_obj_hg19Runx124 ,k=3)
 
 #To analayse trans interactions 
-#new objects were created as 4C-ker stuggles to process the samples all together and fails at STAG2 12 PMA samples
-
-#For trans analysis: Runx124 with controls removed without sample 21 and without STAG2 12 PMA
-my_obj_hg19Runx124_2 = createR4CkerObjectFromFiles(files = c("/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S16_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S17_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S18_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S20_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S22_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S23_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S24_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S25_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S27_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S28_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S29_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S34_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S35_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S36_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph"),
-                       bait_chr="chr21",
-                       bait_coord= 36398958,
-                       bait_name = "Runx124",
-                       primary_enz = "GATC",
-                       samples = c("WT_DMSO_12h_1", "WT_DMSO_12h_2","WT_DMSO_12h_3", "WT_PMA_12h_1", "WT_PMA_12h_3", "WT_PMA_72h_1", "WT_PMA_72h_2", "WT_PMA_72h_3", "STAG2_DMSO_12h_1", "STAG2_DMSO_12h_2", "STAG2_DMSO_12h_3", "STAG2_PMA_72h_1", "STAG2_PMA_72h_2", "STAG2_PMA_72h_3"),
-                       conditions = c("WT_DMSO_12h", "WT_PMA_12h", "WT_PMA_72h", "STAG2_DMSO_12h", "STAG2_PMA_72h"),
-                       replicates = c(3,2,3,3,3),
-                       species = "hs",
-                       output_dir = "/mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/",
-		       enz_file=enz_file_dpnii_hg19)
-
-#For trans analysis: Runx124 STAG2 12 PMA
-my_obj_Runx124_STAG2_P12 = createR4CkerObjectFromFiles(files = c("/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S31_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S32_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph", "/mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/S33_Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph"),
-                       bait_chr="chr21",
-                       bait_coord= 36398958,
-                       bait_name = "Runx124",
-                       primary_enz = "GATC",
-                       samples = c("STAG2_PMA_12h_1","STAG2_PMA_12h_2","STAG2_PMA_12h_3"),
-                       conditions = c("STAG2_PMA_12h"),
-                       replicates = c(3),
-                       species = "hs",
-                       output_dir = "/mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/",
-		       enz_file=enz_file_dpnii)
-
-
-#trans analysis
-#all samples except STAG2 12 PMA
-trans_results_Runx124=transAnalysis(my_obj_hg19Runx124_2 ,k=20)
-#STAG2 12 PMA samples
-trans_results_Runx124_k50_PMA=transAnalysis(my_obj_Runx124_STAG2_P12,k=20)
+trans_results_Runx124_k50=transAnalysis(my_obj_hg19Runx124 ,k=15)
