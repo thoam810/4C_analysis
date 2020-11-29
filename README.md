@@ -117,5 +117,7 @@ S16_Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph
 13. Differential analysis between different conditions (nearbait and cis)
  - use file DESeq_diff_analysis
  
+14. Map to gene list
+ - use file map_gene_list
 
 
