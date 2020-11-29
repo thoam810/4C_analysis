@@ -1,0 +1,7 @@
+#overlap the fragment locations with gene lists
+#using gene_ref_hg19.bed from UCSC
+
+/mnt/projects/amarni_4c/OG4533BP2/data_processing/codes3d_runx124/codes3d_output/gene_ref_hg19.bed
+# example of WT 12 D Runx1 +24
+
+bedtools intersect -wa -a /mnt/projects/amarni_4c/OG4533BP2/data_processing/codes3d_runx124/codes3d_output/gene_ref_hg19.bed -b /mnt/projects/amarni_4c/OG4533BP2/data_processing/4Cker_R/Runx124_WT_DMSO_12h_cis_highinter_tab.bed| sort | uniq | cut -f 4 >cis_WT_DMSO_12h_genelist.bed
