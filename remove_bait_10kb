@@ -1,0 +1,27 @@
+#remove 10kb up and downstream of bait
+#e.g +24 chr21:36398958-36400177 +/- 10kb fragments chr21:36389105-36409399
+
+cd /mnt/projects/amarni_4c/4cker_scripts
+#find co-ordinates for the 10kb fragments
+
+chr21.36388788.36388858
+
+chr21:36410108.36410178
+
+# co-ordinates = chr21:36388788-36410178
+
+#Runx124_rev_dpnii_hg19_aligned_rem_con.bedGraph
+#Runx124_rev_dpnii_hg19_aligned_rm_self_und.bedGraph
+
+#remove +/-10kb from aligned files
+for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*_Runx124_*_dpnii_hg19_aligned.bedGraph; 
+do grep -v -E 'chr21.36388788.36388858|chr21:36410108.36410178' $file > $(echo $file | sed 's/.bedGraph/_rm_self_und.bedGraph/g'); done
+
+
+#remove +/-10 kb from 24 dpnii rem_con.bedGraph files
+for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*_Runx124_*_dpnii_hg19_aligned_rem_con.bedGraph; 
+do grep -v -E 'chr21.36388788.36388858|chr21:36410108.36410178' $file > $(echo $file); done
+
+#remove +/-10 kb from 24 dpnii rm_self_und.bedGraph files
+for file in /mnt/projects/amarni_4c/OG4533BP2/data_processing/aligned_sam/*_Runx124_*_dpnii_hg19_aligned_rm_self_und.bedGraph; 
+do grep -v -E 'chr21.36388788.36388858|chr21:36410108.36410178' $file > $(echo $file); done
